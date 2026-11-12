@@ -1,0 +1,10 @@
+.board{
+    background-color: blue;
+
+}
+
+.columns{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
