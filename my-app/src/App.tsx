@@ -21,31 +21,37 @@ import Board from './components/Board.tsx'
 import './App.css'
 
 function App() {
-  const [instruments, setInstruments] = useState([])
 
-  useEffect(() => {
-    getInstruments()
-  }, [])
+  // start guest session
+    const [sessionReady, setSessionReady] = useState(false);
 
+    useEffect(() => {
+      async function startSession() {
+        const { data: { session } } = await supabase.auth.getSession();
 
-  async function getInstruments() {
-    const { data, error } = await supabase.from('instruments').select()
+        if (!session) {
+          //sign in anonymously with supabase
+          const { error: authError } = await supabase.auth.signInAnonymously();
+          if (authError) {
+            console.error('Error signing in anonymously:', authError);
+            return;
+          }
+        }
 
-    if (error) {
-      console.error(error)
-      return
+        setSessionReady(true);
+      }
+
+      startSession();
+    }, []);
+
+    if (!sessionReady) {
+      return <div>Initializing session...</div>;
     }
 
-    setInstruments(data)
-  }
 
   return (
 
     <ul>
-      {instruments.map((instrument) => (
-        <li key={instrument.id}>{instrument.name}</li>
-      ))}
-
 
       <Board/>
     </ul>

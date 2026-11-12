@@ -2,28 +2,26 @@ import './Board.css'
 import Column from './Column.tsx'
 import Task from './Task.tsx'
 import { supabase } from '../lib/supabaseClient'
+import {insert} from '../database.ts'
 
 import {useEffect, useState} from 'react'
 
 function Board(){
 
-    const [tasks, setTasks] = useState([]);
-    useEffect(()=>{
-        async function loadTasks(){
-            const {data, error} = await supabase.from('Tasks').select('*');
-            if (data) setTasks(data);
-        }
-        loadTasks();
-    }, []);
-
-
-    // const data = await supabase
-    // .from('Tasks').select()
+    function addTaskBtn(){
+        alert("Button was clicked");
+        insert();
+    }
 
 
     return (
         <div className="board" >
-            <h2>Board</h2>
+            <div className = 'top-board'>
+                <h2>Board</h2>
+
+                <button id = 'addTask' onClick={addTaskBtn}>Add Task +</button>                
+            </div>
+
 
             <div className='columns'>
                 <Column title_status='To Do'
