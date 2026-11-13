@@ -1,21 +1,26 @@
 
 import Task from './Task.tsx'
 
-export default function Column({title_status}){
+export default function Column({title_status, tasks}){
 
 
     return (
         <div className="column" >
             <h2>{title_status}</h2>
+            
+            {tasks.map(task =>(
 
-            {/* sample task
-            <Task 
-                title="Task1" 
-                status = "in_progress"
-                priority = "low"
-                due_date = ""
-                description ="complete this task soon"
-             /> */}
+                <Task 
+                    key = {task.id}
+                    id = {task.id}
+                    title= {task.title}
+                    priority = {task.priority}
+                    due_date = {task.due_date}
+                    description = {task.description}
+                    />
+            ))}
+
+
         </div>
     )
 }
