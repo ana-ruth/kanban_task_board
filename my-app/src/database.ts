@@ -26,3 +26,16 @@ export async function select(){
 
     return data;
 }
+
+export async function update(new_status, task_id){
+
+    const {error} = await supabase.from('Tasks').update({status:new_status}).eq('id',task_id);
+    
+    if (error) {
+        console.error("Update failed: ", error);
+        return false
+    }
+
+    return true;
+    
+}
