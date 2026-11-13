@@ -8,7 +8,7 @@ export async function insert(taskData){
         .from('Tasks').insert({
                             title: taskData.title, 
                             description: taskData.description,
-                            due_date: taskData.due_date,
+                            due_date: taskData.due_date ? taskData.due_date: null,
                             priority: taskData.priority,
                             status: taskData.status
         })
