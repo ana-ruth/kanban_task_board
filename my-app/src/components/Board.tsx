@@ -3,7 +3,7 @@ import Column from './Column.tsx'
 import Task from './Task.tsx'
 import { supabase } from '../lib/supabaseClient'
 import {insert, select, update} from '../database.ts'
-
+import AddTask from './AddTask.tsx'
 import {DragDropProvider} from '@dnd-kit/react';
 
 import {useEffect, useState} from 'react'
@@ -11,6 +11,7 @@ import {useEffect, useState} from 'react'
 function Board(){
 
     const [tasks, setTasks] = useState([]);
+    const [isModalOpen, setIsModalOpen] = useState(false)
 
     //function to load tasks
     async function loadTasks(){
@@ -25,12 +26,16 @@ function Board(){
         loadTasks();
     }, []);
 
+    //open dialog to add tasks
     function addTaskBtn(){
-        alert("Button was clicked");
-        insert();
-        loadTasks();
+        setIsModalOpen(true);
     }
 
+    //insert task to database and reload tasks
+    async function handleSaveTask(taskData){
+        await insert(taskData);
+        loadTasks();
+    }
 
     // separate tasks based on status
     const todo = tasks.filter(task => task.status === "todo");
@@ -83,6 +88,14 @@ function Board(){
 
                     <button id = 'addTask' onClick={addTaskBtn}>Add Task +</button>                
                 </div>
+
+                {/* Dialog AddTask component */}
+                <AddTask
+                    isOpen = {isModalOpen}
+                    onClose={()=>setIsModalOpen(false)}
+                    onSave={handleSaveTask}
+                />
+
 
                 {/* Columns */}
                 <div className='columns'>
