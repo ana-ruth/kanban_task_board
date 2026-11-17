@@ -1,16 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html{
+    background-color: #F8F9FB;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
+}
+
 .board{
-    background-color: blue;
-
+    background-color: #F8F9FB;
+    margin: 5%;
+    width: 90%;
+    min-height: 100vh;
 }
 
-.columns{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-
+/* titles and add task button */
 .top-board{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
+}
+
+.top-board >h2{
+    margin-left: 9vh;
+}
+
+/* columns */
+.columns{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 100vh;
+    gap: 12px;
+    
+}
+
+.column{
+    background-color: #EDF0F5;
+    width: 40vh;
+    border-radius: 10px;
+}
+
+.column > h2{
+    margin-top: 2vh;
+    margin-left: 3vh;
+    /* font-family: "Geist Mono", monospace; */
+    font-size: 1.25rem;
+    color: #253047;
+}
+
+
+button {
+    background-color:#545E75 ;
+    border: none;
+    border-radius: 6px;
+
+    color: #FFFFFF;
+    padding: 1.5vh 2vh;
+    
+} 
+
+/* task cards */
+.task{
+    background-color: #FFFFFF ;
+    padding: 2.5vh 2.5vh 2.5vh 2.5vh;
+    margin: 3vh;
+
+    border-style: solid;
+    border-radius: 7px;
+    border-width:  1.5px;
+    border-color: #E2E6ED;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    min-height: 14vh;
+
+}
+
+/* task fonts */
+.task > h3{
+    color: #253047;
+    font-size: 1.15rem;
+    margin-bottom: 2vh;
+}
+
+.task > p, .task > div > p {
+    color: #727C8D;
+    font-size: 0.9rem;
+}
+
+/* due date and priority */
+.taskInfo{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2vh;
 }

@@ -5,7 +5,7 @@ import {useDroppable} from '@dnd-kit/react'
 export default function Column({id, title_status, tasks}){
        
     // too make columns droppable
-    const {isDropTarget, ref} = useDroppable({
+    const {ref} = useDroppable({
         id:id,
      });
 
@@ -13,7 +13,6 @@ export default function Column({id, title_status, tasks}){
         <div className="column" ref={ref}>
             <h2>{title_status}</h2>
 
-            {isDropTarget ? 'Draggable element is over me' : 'Drag something over me'}
 
             
             {/* populate column with tasks */}

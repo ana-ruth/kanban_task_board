@@ -24,7 +24,7 @@ export default function AddTask({isOpen, onClose, onSave}){
         <dialog open >
 
         {/* Get Task data */}
-        
+
             <form onSubmit={handleSubmit}>
 
                 <h2>Add New Task</h2>

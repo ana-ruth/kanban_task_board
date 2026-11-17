@@ -51,10 +51,11 @@ function App() {
 
   return (
 
-    <ul>
 
-      <Board/>
-    </ul>
+      <Board/>      
+   
+
+
 
   )
 }

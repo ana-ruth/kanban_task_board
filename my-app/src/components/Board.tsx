@@ -1,7 +1,5 @@
 import './Board.css'
 import Column from './Column.tsx'
-import Task from './Task.tsx'
-import { supabase } from '../lib/supabaseClient'
 import {insert, select, update} from '../database.ts'
 import AddTask from './AddTask.tsx'
 import {DragDropProvider} from '@dnd-kit/react';
@@ -13,7 +11,7 @@ function Board(){
     const [tasks, setTasks] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false)
 
-    //function to load tasks
+    //function to load tasks from supabase
     async function loadTasks(){
         let data = await select();
         console.log(data);
@@ -84,9 +82,10 @@ function Board(){
 
             <div className="board" >
                 <div className = 'top-board'>
-                    <h2>Board</h2>
 
-                    <button id = 'addTask' onClick={addTaskBtn}>Add Task +</button>                
+                    <h2>Task View</h2>
+
+                    <button id = 'addTask' onClick={addTaskBtn}>+ New Task</button>                
                 </div>
 
                 {/* Dialog AddTask component */}
@@ -99,10 +98,10 @@ function Board(){
 
                 {/* Columns */}
                 <div className='columns'>
-                    <Column id='todo' title_status='To Do' tasks = {todo}/>
-                    <Column id='in_progress' title_status='In Progress' tasks = {in_progress}/>
-                    <Column id='in_review' title_status='In Review' tasks = {in_review}/>
-                    <Column id='done' title_status='Done' tasks = {done}/>                
+                    <Column id='todo' title_status='TO DO' tasks = {todo}/>
+                    <Column id='in_progress' title_status='IN PROGRESS' tasks = {in_progress}/>
+                    <Column id='in_review' title_status='IN REVIEW' tasks = {in_review}/>
+                    <Column id='done' title_status='DONE' tasks = {done}/>                
                 </div>
 
 
