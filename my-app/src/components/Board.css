@@ -25,12 +25,14 @@ html{
     flex-direction: row;
     justify-content: space-between;
 
-    margin-right: 5vh;
+    margin: 5%;
+    width: 90%;
+
     margin-bottom: 2vh;
 }
 
 .top-board >h2{
-    margin-left: 5vh;
+    /* margin-left: 5vh; */
     font-size: 4.75vh;
 }
 
