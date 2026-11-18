@@ -3,12 +3,13 @@ import Column from './Column.tsx'
 import {insert, select, update} from '../database.ts'
 import AddTask from './AddTask.tsx'
 import {DragDropProvider} from '@dnd-kit/react';
+import type { NewTask, TaskData, TaskStatus } from '../types.ts'
 
 import {useEffect, useState} from 'react'
 
 function Board(){
 
-    const [tasks, setTasks] = useState([]);
+    const [tasks, setTasks] = useState<TaskData[]>([]);
     const [isModalOpen, setIsModalOpen] = useState(false)
 
     //function to load tasks from supabase
@@ -30,7 +31,7 @@ function Board(){
     }
 
     //insert task to database and reload tasks
-    async function handleSaveTask(taskData){
+    async function handleSaveTask(taskData: NewTask){
         await insert(taskData);
         loadTasks();
     }
@@ -51,7 +52,7 @@ function Board(){
         if(!source || !target) return;
 
         const taskId = source.id;
-        const newStatus = String(target.id);
+        const newStatus = String(target.id) as TaskStatus;
 
         //get task
         const task = tasks.find(t => t.id === taskId);

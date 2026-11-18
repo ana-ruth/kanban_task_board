@@ -1,8 +1,9 @@
 import { supabase } from './lib/supabaseClient.ts'
+import type { NewTask, TaskData, TaskStatus } from './types.ts'
 
 
 // INSERT task  function
-export async function insert(taskData){
+export async function insert(taskData: NewTask){
 
     const {data, error} = await supabase
         .from('Tasks').insert({
@@ -30,11 +31,11 @@ export async function select(){
         return null;
     }
 
-    return data;
+    return data as TaskData[];
 }
 
 //UPDATE status for task
-export async function update(new_status, task_id){
+export async function update(new_status: TaskStatus, task_id: TaskData["id"]){
 
     const {error} = await supabase.from('Tasks').update({status:new_status}).eq('id',task_id);
     

@@ -1,8 +1,15 @@
 
 import Task from './Task.tsx'
 import {useDroppable} from '@dnd-kit/react'
+import type { TaskData, TaskStatus } from '../types.ts'
 
-export default function Column({id, title_status, tasks}){
+type ColumnProps = {
+    id: TaskStatus;
+    title_status: string;
+    tasks: TaskData[];
+};
+
+export default function Column({id, title_status, tasks}: ColumnProps){
        
     // too make columns droppable
     const {ref} = useDroppable({

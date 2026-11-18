@@ -1,19 +1,27 @@
+import type { SubmitEvent } from 'react'
+import type { NewTask, TaskPriority, TaskStatus } from '../types.ts'
 
-export default function AddTask({isOpen, onClose, onSave}){
-    
+type AddTaskProps = {
+    isOpen: boolean;
+    onClose: () => void;
+    onSave: (task: NewTask) => void;
+};
+
+export default function AddTask({isOpen, onClose, onSave}: AddTaskProps){
+
     if(!isOpen) return null;
 
-    function handleSubmit(e){
+    function handleSubmit(e: SubmitEvent<HTMLFormElement>){
         e.preventDefault();
 
         //task data from user
-        const formData = new FormData(e.target);
-        const newTask  = {
-            title: formData.get("title"),
-            description: formData.get("description"),
-            due_date: formData.get("due_date"),
-            priority: formData.get("priority"),
-            status: formData.get("status") || "todo"
+        const formData = new FormData(e.currentTarget);
+        const newTask: NewTask = {
+            title: String(formData.get("title") ?? ""),
+            description: String(formData.get("description") ?? ""),
+            due_date: (formData.get("due_date") as string) || null,
+            priority: (formData.get("priority") as TaskPriority) || "normal",
+            status: (formData.get("status") as TaskStatus) || "todo"
         }
 
         onSave(newTask);

@@ -1,6 +1,9 @@
 import {useDraggable} from '@dnd-kit/react'
+import type { TaskData } from '../types.ts'
 
-export default function Task({id, title, priority, due_date, description}){
+type TaskProps = Pick<TaskData, "id" | "title" | "priority" | "due_date" | "description">;
+
+export default function Task({id, title, priority, due_date, description}: TaskProps){
 
     // to make task draggable
     const {ref} = useDraggable({
