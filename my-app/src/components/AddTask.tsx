@@ -28,50 +28,86 @@ export default function AddTask({isOpen, onClose, onSave}){
             <form onSubmit={handleSubmit}>
 
                 <h2>Add New Task</h2>
+                <p>Add task details and organize your project.</p>
 
-                <label >Title:
-                    <input type="text" name="title" required />
-                </label>
-                <br />
+                <div className="title-div">
+                    <label >Title </label>
+                        <input type="text" name="title" required />                   
+                </div>                    
 
-                <label >Description:
-                    <input type="text" name="description"/>
-                </label>   
-                <br /> 
+                <div className="description-div">
+                    <label >Description </label>  
+                        <input type="text" name="description"/>                    
+                </div>
 
-                <label>Due Date:
-                    <input type="date" name="due_date" />
-                </label> 
-                <br />
+                <div className="date-priority">
 
-                <p>Priority</p>
-                    <input type="radio" id="low" name="priority" value="low"/>
-                    <label htmlFor="low">Low</label><br />
+                    <div className="dueDate-div">
+                        <label>Due Date </label>  
+                            <input type="date" name="due_date" />                        
+                    </div>
 
-                    <input type="radio" id="normal"  name="priority" value="normal" defaultChecked/>
-                    <label htmlFor="normal">Normal</label><br />
 
-                    <input type="radio" id="high" name="priority" value="high"/>
-                    <label htmlFor="high">High</label><br />                    
+                    <div className="priority-div">
+                        <label> Priority </label>  
 
-                <br />
+                            <div className="priority-options">
+                                <div>
+                                    <input type="radio" id="low" name="priority" value="low"/>
+                                    <label htmlFor="low">Low</label><br />                                    
+                                </div>
 
-                <p>Status</p>
-                    <input type="radio" id="todo" name="status" value="todo" defaultChecked/>
-                    <label htmlFor="todo">To Do</label><br />
+                                <div>
+                                    <input type="radio" id="normal"  name="priority" value="normal" defaultChecked/>
+                                    <label htmlFor="normal">Normal</label><br />                                    
+                                </div>
 
-                    <input type="radio" id="in_progress" name="status" value="in_progress"/>
-                    <label htmlFor="in_progress">In Progress</label><br />
+                                <div>
+                                    <input type="radio" id="high" name="priority" value="high"/>
+                                    <label htmlFor="high">High</label><br />                                     
+                                </div>
+                                 
+                            </div>
+                 
+                    </div>                    
+                </div>
 
-                    <input type="radio" id="in_review" name="status" value="in_review"/>
-                    <label htmlFor="in_review">In Review</label><br />  
 
-                    <input type="radio" id="done" name="status" value="done"/>
-                    <label htmlFor="done">Done</label><br />
-                    
-                <br />
-                <button type="submit">Add Task</button>
-                <button type="button" onClick={onClose}>Cancel</button>
+                <div className="status-div">
+                    <label>Status</label>  
+                    <div className="status-options">
+
+                        <div>
+                            <input type="radio" id="todo" name="status" value="todo" defaultChecked/>
+                            <label htmlFor="todo">To Do</label><br />                           
+                        </div>
+
+                        <div>
+                            <input type="radio" id="in_progress" name="status" value="in_progress"/>
+                            <label htmlFor="in_progress">In Progress</label><br />                            
+                        </div>
+
+                        <div>
+                            <input type="radio" id="in_review" name="status" value="in_review"/>
+                            <label htmlFor="in_review">In Review</label><br />                              
+                        </div>
+
+                        <div>
+                            <input type="radio" id="done" name="status" value="done"/>
+                            <label htmlFor="done">Done</label><br />                            
+                        </div>
+
+                    </div>
+
+
+                </div>
+                
+
+                <div className="buttons-div">
+                    <button type="button" onClick={onClose} className="cancel-btn">Cancel</button>                    
+                    <button type="submit">Add Task</button>
+                </div>
+
 
             </form>
         </dialog>

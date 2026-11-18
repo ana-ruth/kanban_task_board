@@ -22,10 +22,14 @@ html{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
+    margin-right: 5vh;
+    margin-bottom: 2vh;
 }
 
 .top-board >h2{
-    margin-left: 9vh;
+    margin-left: 5vh;
+    font-size: 5vh;
 }
 
 /* columns */
@@ -60,8 +64,16 @@ button {
 
     color: #FFFFFF;
     padding: 1.5vh 2vh;
-    
 } 
+
+button:hover{
+    background-color: #5e6983 ;
+}
+
+/* new task button */
+.top-board > button{
+    font-size: 2.2vh;
+}
 
 /* task cards */
 .task{
@@ -82,6 +94,10 @@ button {
 
 }
 
+.task:hover{
+    background-color: #fafcff ;
+}
+
 /* task fonts */
 .task > h3{
     color: #253047;
@@ -99,4 +115,159 @@ button {
     display: flex;
     justify-content: space-between;
     margin-top: 2vh;
+}
+
+/* AddTask dialog */
+dialog{
+    border:none;
+}
+
+form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 75vh;
+    background-color: #F8F9FB;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(37, 48, 71, 0.15);
+    z-index: 1000;
+    padding: 3vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+form > p{
+    margin-top: 1vh;
+    margin-bottom: 2vh;
+}
+
+.title-div, .description-div{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3vh;
+}
+input{
+    height: 5vh;
+    padding-left: 1vh;
+    border-style: solid ;
+    border-width:  1.5px;
+    border-color: #E2E6ED;
+    border-radius: 7px;
+    color: #727C8D;
+}
+
+.description-div > input{
+    height: 9vh;
+}
+
+.date-priority{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 3vh;
+}
+
+/* due date */
+.dueDate-div{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    padding-right: 2%;
+}
+
+/* priority */
+.priority-div{
+    display: flex;
+    flex-direction: column;
+    width: 58%;
+
+}
+
+.priority-options{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.priority-options > div{
+    display: flex;
+    border-style: solid;
+    border-width:  1.5px;
+    padding: 0vh 0.5vh;
+    width: 100%;
+    border-color: #E2E6ED;
+    border-radius: 7px;
+    padding-left: 1vh;
+}
+
+.priority-options > div > label{
+    margin-top: 1.2vh;
+    margin-left: 1vh;
+}
+
+
+/* status */
+.status-div{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3vh;
+}
+.status-options{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.status-options > div {
+    display: flex;
+    border-style: solid;
+    border-width:  1.5px;
+    border-color: #E2E6ED;
+    border-radius: 7px;
+    padding: 0vh 0.5vh;
+    width: 100%;
+    padding-left: 1vh;
+}
+
+
+.status-options > div > label{
+    margin-top: 1.2vh;
+    margin-left: 1vh;
+
+}
+
+/* grey background on the selected priority/status option */
+.priority-options > div:has(input:checked),
+.status-options > div:has(input:checked){
+    background-color: #E2E6ED;
+}
+
+.priority-options > div:hover,
+.status-options > div:hover{
+    background-color: rgb(230, 234, 240);
+}
+
+.buttons-div{
+
+    align-self: flex-end;
+    display: flex;
+    flex-direction: row;
+    gap: 2vh;
+}
+
+.cancel-btn{
+    background-color: #F8F9FB;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #545E75;
+    color: #545E75;
+}
+
+.cancel-btn:hover{
+    background-color: #d2d3d4;
+    border-color: #d2d3d4;
 }
