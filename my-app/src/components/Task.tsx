@@ -14,7 +14,11 @@ export default function Task({id, title, priority, due_date, description}){
 
             <div className="taskInfo">
                 <p>{due_date}</p> 
-                <p>{priority}</p>
+                <p
+                    className={`priority-dot priority-${priority}`}
+                    title={`${priority} priority`}
+                    aria-label={`${priority} priority`}
+                ></p>
             </div>
         
         </div>

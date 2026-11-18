@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -29,7 +31,7 @@ html{
 
 .top-board >h2{
     margin-left: 5vh;
-    font-size: 5vh;
+    font-size: 4.75vh;
 }
 
 /* columns */
@@ -51,8 +53,9 @@ html{
 .column > h2{
     margin-top: 2vh;
     margin-left: 3vh;
-    /* font-family: "Geist Mono", monospace; */
-    font-size: 1.25rem;
+    font-family: "Geist Mono", monospace;
+    font-size: 1.15rem;
+    font-weight: 600;
     color: #253047;
 }
 
@@ -238,6 +241,26 @@ input{
     margin-top: 1.2vh;
     margin-left: 1vh;
 
+}
+
+/* priority circle on task cards */
+.priority-dot{
+    width: 2.3vh;
+    height: 2.3vh;
+    border-radius: 50%;
+    align-self: center;
+}
+
+.priority-low{
+    background-color: #34b8626a;
+}
+
+.priority-normal{
+    background-color: #dcc9206a;
+}
+
+.priority-high{
+    background-color: #c43f3669;
 }
 
 /* grey background on the selected priority/status option */
